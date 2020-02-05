@@ -1,7 +1,7 @@
-package main.fr.helloyou;
+package fr.helloyou;
 
-import main.fr.helloyou.personne.Impl.PersonneImpl;
-import main.fr.helloyou.personne.api.Personne;
+import fr.helloyou.personne.api.Personne;
+import fr.helloyou.personne.Impl.PersonneImpl;
 
 public class Main
 {

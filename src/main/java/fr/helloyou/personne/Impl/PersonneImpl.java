@@ -1,6 +1,6 @@
-package main.fr.helloyou.personne.Impl;
+package fr.helloyou.personne.Impl;
 
-import main.fr.helloyou.personne.api.Personne;
+import fr.helloyou.personne.api.Personne;
 
 public class PersonneImpl implements Personne
 {
