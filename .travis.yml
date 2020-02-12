@@ -1,0 +1,47 @@
+# https://blog.travis-ci.com/
+
+language: java
+os: linux
+dist: bionic
+
+# https://docs.travis-ci.com/user/environment-variables/
+
+# https://docs.travis-ci.com/user/reference/overview/
+
+# https://docs.travis-ci.com/user/job-lifecycle/
+
+# For arm64, check :
+# https://docs.travis-ci.com/user/multi-cpu-architectures
+
+# Linux
+# https://docs.travis-ci.com/user/reference/bionic/
+# macOS
+# https://docs.travis-ci.com/user/reference/osx/
+
+# https://docs.travis-ci.com/user/installing-dependencies
+
+# https://docs.travis-ci.com/user/caching/
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - find . -name "$HOME/.gradle/cache/wrapper/*.zip" -exec rm -rf {} \;
+  - find . -name "$HOME/.gradle/cache/wrapper/*.ok" -exec rm -rf {} \;
+  - find . -name ".gradle/*.lock" -exec rm -rf {} \;
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/modules-2/
+    - $HOME/.gradle/wrapper/
+    - .gradle
+
+before_script:
+  - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+
+script:
+  - java --version
+
+jobs:
+  include:
+    - name: "(JDK 9) Jhipster - Ubuntu 18.04"
+      env: JDK=9
+      script: source ./install-jdk.sh --feature 9
