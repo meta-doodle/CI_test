@@ -36,10 +36,10 @@ cache:
 
 before_script:
   - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
-  - chmod +x ./gradlew
 
 script:
   - java --version
+  - source ./install-jdk.sh --feature "${JDK}"
   - if [ "${BUILD}" = "true" ]; then ./gradlew build ; fi
   - if [ "${TEST}" = "true" ]; then ./gradlew test ; fi
 
@@ -49,10 +49,8 @@ jobs:
       env:
         - JDK=11
         - BUILD=true
-      script: source ./install-jdk.sh --feature 11
     
     - name: "(JDK 11) CI-Test [Test] - Ubuntu 18.04"
       env:
         - JDK=11
         - TEST=true
-      script: source ./install-jdk.sh --feature 11
