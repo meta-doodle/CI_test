@@ -1,7 +1,9 @@
 package fr.helloyou;
 
 import fr.helloyou.personne.api.Personne;
-import fr.helloyou.personne.Impl.PersonneImpl;
+import fr.helloyou.personne.impl.PersonneImpl;
+
+import org.tinylog.Logger;
 
 public class Main
 {
@@ -9,6 +11,6 @@ public class Main
     {
         Personne thomas = new PersonneImpl("Thomas");
 
-        System.out.println("Hello " + thomas.getName() + "!");
+        Logger.info("Hello " + thomas.getName() + "!");
     }
 }

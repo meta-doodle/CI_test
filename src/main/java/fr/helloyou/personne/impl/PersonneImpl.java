@@ -1,4 +1,4 @@
-package fr.helloyou.personne.Impl;
+package fr.helloyou.personne.impl;
 
 import fr.helloyou.personne.api.Personne;
 
