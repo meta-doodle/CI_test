@@ -75,6 +75,18 @@ jobs:
         - JDK=11
         - COMPILE=true
 
+    # Task assemble
+    - name: "(JDK 10) CI-Test [Compile] - Ubuntu 18.04"
+      env:
+        - JDK=10
+        - COMPILE=true
+
+    # Task assemble
+    - name: "(JDK 9) CI-Test [Compile] - Ubuntu 18.04"
+      env:
+        - JDK=9
+        - COMPILE=true
+
     # Task build
     - name: "(JDK 11) CI-Test [Test] - Ubuntu 18.04"
       env:

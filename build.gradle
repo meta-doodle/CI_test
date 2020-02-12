@@ -12,10 +12,10 @@ plugins {
 }
 
 // https://docs.gradle.org/current/javadoc/org/gradle/api/JavaVersion.html
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
+//java {
+//    sourceCompatibility = JavaVersion.VERSION_11
+//    targetCompatibility = JavaVersion.VERSION_11
+//}
 
 version = '0.0.1'
 
