@@ -25,7 +25,7 @@ dist: bionic
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   #- find . -name "$HOME/.gradle/cache/wrapper/*.zip" -exec rm -rf {} \;
-  #- find . -name "$HOME/.gradle/cache/wrapper/*.ok" -exec rm -rf {} \;
+  #- find . -name "$HOME/.gradle/cache/wrapper/*.lck" -exec rm -rf {} \;
   - find . -name ".gradle/*.lock" -exec rm -rf {} \;
 
 cache:
@@ -33,23 +33,35 @@ cache:
     - $HOME/.gradle/caches/modules-2/
     # - $HOME/.gradle/wrapper/
     - .gradle
+    - build
 
-before_script:
+before_install:
   - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+
+install:
+  - source ./install-jdk.sh --feature "${JDK}"
 
 script:
   - java --version
-  - source ./install-jdk.sh --feature "${JDK}"
-  - if [ "${BUILD}" = "true" ]; then ./gradlew build ; fi
-  - if [ "${TEST}" = "true" ]; then ./gradlew test ; fi
+  - if [ "${COMPILE}" = "true" ]; then ./gradlew assemble ; fi
+  - if [ "${TEST}" = "true" ]; then ./gradlew build ; fi
 
 jobs:
   include:
-    - name: "(JDK 11) CI-Test [Build] - Ubuntu 18.04"
+    # Task assemble
+    - name: "(JDK 11) CI-Test [Compile] - Ubuntu 18.04"
       env:
         - JDK=11
-        - BUILD=true
+        - COMPILE=true
     
+    # Task assemble
+    - name: "(JDK 11) CI-Test [Compile] - macOS 10.14"
+      os: osx
+      osx_image: xcode11.3
+      env:
+        - JDK=11
+        - COMPILE=true
+    # Task build
     - name: "(JDK 11) CI-Test [Test] - Ubuntu 18.04"
       env:
         - JDK=11
