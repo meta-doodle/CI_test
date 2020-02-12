@@ -24,14 +24,14 @@ dist: bionic
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - find . -name "$HOME/.gradle/cache/wrapper/*.zip" -exec rm -rf {} \;
-  - find . -name "$HOME/.gradle/cache/wrapper/*.ok" -exec rm -rf {} \;
+  #- find . -name "$HOME/.gradle/cache/wrapper/*.zip" -exec rm -rf {} \;
+  #- find . -name "$HOME/.gradle/cache/wrapper/*.ok" -exec rm -rf {} \;
   - find . -name ".gradle/*.lock" -exec rm -rf {} \;
 
 cache:
   directories:
     - $HOME/.gradle/caches/modules-2/
-    - $HOME/.gradle/wrapper/
+    # - $HOME/.gradle/wrapper/
     - .gradle
 
 before_script:
