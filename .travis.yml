@@ -36,6 +36,7 @@ cache:
     - build
 
 before_install:
+  # https://github.com/sormuras/bach
   - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
 
 install:
@@ -49,11 +50,23 @@ script:
 jobs:
   include:
     # Task assemble
+    - name: "(JDK 13) CI-Test [Compile] - Ubuntu 18.04"
+      env:
+        - JDK=13
+        - COMPILE=true
+
+    # Task assemble
+    - name: "(JDK 12) CI-Test [Compile] - Ubuntu 18.04"
+      env:
+        - JDK=12
+        - COMPILE=true
+
+    # Task assemble
     - name: "(JDK 11) CI-Test [Compile] - Ubuntu 18.04"
       env:
         - JDK=11
         - COMPILE=true
-    
+
     # Task assemble
     - name: "(JDK 11) CI-Test [Compile] - macOS 10.14"
       os: osx
@@ -61,6 +74,7 @@ jobs:
       env:
         - JDK=11
         - COMPILE=true
+
     # Task build
     - name: "(JDK 11) CI-Test [Test] - Ubuntu 18.04"
       env:

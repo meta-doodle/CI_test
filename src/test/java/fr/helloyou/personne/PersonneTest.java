@@ -14,6 +14,6 @@ class PersonneTest
     {
         Personne thomas = new PersonneImpl("Thomas");
 
-        assertTrue(thomas.getName().equals("Thomas_error"));
+        assertTrue(thomas.getName().equals("Thomas"));
     }
 }
